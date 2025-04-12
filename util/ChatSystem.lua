@@ -1,8 +1,9 @@
 local BotsInit = require("game/botsinit")
 local M = BotsInit.CreateGeneric()
 
-local version = "1.7.16"
-local updateDate = "December 11, 2023"
+local version = "0.0.1"
+local updateDate = "April 13, 2025"
+local email_info = "duongthieu1995@gmail.com"
 
 local announceFlag = false
 function M.SendVersionAnnouncement()
@@ -18,7 +19,8 @@ function M.SendVersionAnnouncement()
 							version ..
 							", updated on " ..
 							updateDate ..
-							". If you have any questions or feedback, please leave message on steam workshop https://steamcommunity.com/sharedfiles/filedetails/?id=855965029 or contact Dota2RMMAI@outlook.com"
+							". If you have any questions or feedback, please leave message on e-mail: " ..
+							email_info ..
 							,
 							true
 						)
