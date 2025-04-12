@@ -38,67 +38,67 @@ As mentioned above, this AI was developed using the **Mode Override**. We overri
 
 If you'd like to work within the existing mode architecture but override the logic for mode desire and behavior, for example the Laning mode, you can implement the following functions in a `mode_laning_generic.lua` file:
 
-* GetDesire() - Called every ~300ms, and needs to return a floating-point value between 0 and 1 that indicates how much this mode wants to be the active mode.
-* OnStart() - Called when a mode takes control as the active mode.
-* OnEnd() - Called when a mode relinquishes control to another active mode.
-* Think() - Called every frame while this is the active mode. Responsible for issuing actions for the bot to take.
+-   GetDesire() - Called every ~300ms, and needs to return a floating-point value between 0 and 1 that indicates how much this mode wants to be the active mode.
+-   OnStart() - Called when a mode takes control as the active mode.
+-   OnEnd() - Called when a mode relinquishes control to another active mode.
+-   Think() - Called every frame while this is the active mode. Responsible for issuing actions for the bot to take.
 
 #### 2.1.1 Mode list
 
 The list of valid bot patterns that can be overridden is as follows. (Patterns that have been overridden are bolded, and patterns that have no effect are strikethrough.)
 
-* **laning**
-  * Earn experience and money in the early game.
-* attack
-  * Try to kill an enemy hero.
-* ~~roam~~
-  * Solo Gank, but doesn't seem to be enabled in game.
-* retreat
-  * Retreat because HP/MP is too low.
-* **secret_shop**
-  * Shop in person at the secret store.
-* **side_shop**
-  * Activate watchtowers on both sides. (After side shop removal)
-* **rune**
-  * Pick up the rune in the river.
-* **push_tower_top**
-  * Push the top lane.
-* **push_tower_mid**
-  * Push the middle lane.
-* **push_tower_bot**
-  * Push the bottom lane.
-* defend_tower_top
-  * Defend the top lane.
-* defend_tower_mid
-  * Defendthe top lane.
-* defend_tower_bot
-  * Defendthe top lane.
-* ~~assemble~~
-  * Ready to do something together, but doesn't seem to be enabled in game.
-* **team_roam**
-  * Was used to gank with smoke, but is not enabled now.
-* **farm**
-  * Make money by jungle or laning.
-* defend_ally
-  * Use abilities to protect teammates, such as healing, adding buffs, etc.
-* ~~evasive_maneuvers~~
-  * Evade abilities projectiles, but doesn't seem to be enabled in game.
-* roshan
-  * Try to kill roshan.
-* **item**
-  * Intended to handle item looting and item swapping, but not currently enabled.
-* **ward**
-  * Place Observe Ward and Sentry Ward.
+-   **laning**
+    -   Earn experience and money in the early game.
+-   attack
+    -   Try to kill an enemy hero.
+-   ~~roam~~
+    -   Solo Gank, but doesn't seem to be enabled in game.
+-   retreat
+    -   Retreat because HP/MP is too low.
+-   **secret_shop**
+    -   Shop in person at the secret store.
+-   **side_shop**
+    -   Activate watchtowers on both sides. (After side shop removal)
+-   **rune**
+    -   Pick up the rune in the river.
+-   **push_tower_top**
+    -   Push the top lane.
+-   **push_tower_mid**
+    -   Push the middle lane.
+-   **push_tower_bot**
+    -   Push the bottom lane.
+-   defend_tower_top
+    -   Defend the top lane.
+-   defend_tower_mid
+    -   Defendthe top lane.
+-   defend_tower_bot
+    -   Defendthe top lane.
+-   ~~assemble~~
+    -   Ready to do something together, but doesn't seem to be enabled in game.
+-   **team_roam**
+    -   Was used to gank with smoke, but is not enabled now.
+-   **farm**
+    -   Make money by jungle or laning.
+-   defend_ally
+    -   Use abilities to protect teammates, such as healing, adding buffs, etc.
+-   ~~evasive_maneuvers~~
+    -   Evade abilities projectiles, but doesn't seem to be enabled in game.
+-   roshan
+    -   Try to kill roshan.
+-   **item**
+    -   Intended to handle item looting and item swapping, but not currently enabled.
+-   **ward**
+    -   Place Observe Ward and Sentry Ward.
 
 ### 2.2 Ability and Item usage
 
 If you'd like to just override decisionmaking around ability and item usage, you can implement the following functions in an ability_item_usage_generic.lua file:
 
-* ItemUsageThink() - Called every frame. Responsible for issuing item usage actions.
-* AbilityUsageThink() - Called every frame. Responsible for issuing ability usage actions.
-* CourierUsageThink() - Called every frame. Responsible for issuing commands to the courier.
-* BuybackUsageThink() - Called every frame. Responsible for issuing a command to buyback.
-* AbilityLevelUpThink() - Called every frame. Responsible for managing ability leveling.
+-   ItemUsageThink() - Called every frame. Responsible for issuing item usage actions.
+-   AbilityUsageThink() - Called every frame. Responsible for issuing ability usage actions.
+-   CourierUsageThink() - Called every frame. Responsible for issuing commands to the courier.
+-   BuybackUsageThink() - Called every frame. Responsible for issuing a command to buyback.
+-   AbilityLevelUpThink() - Called every frame. Responsible for managing ability leveling.
 
 If any of these functions are not implemented, it will fall back to the default C++ implementation.
 
@@ -108,7 +108,7 @@ You can additionally just override the ability/item usage logic for a single her
 
 If you'd like to just override decisionmaking around item purchasing, you can implement the following function in an item_purchase_generic.lua file:
 
-* ItemPurchaseThink() - Called every frame. Responsible for purchasing items.
+-   ItemPurchaseThink() - Called every frame. Responsible for purchasing items.
 
 You can additionally just override the item purchasing logic for a single hero, such as Lina, with an `item_purchase_lina.lua` file.
 
@@ -116,7 +116,7 @@ You can additionally just override the item purchasing logic for a single hero, 
 
 If you would like to override minions, which are illusions, summoned units, dominated units, etc. Basically anything that's under control of your hero. But not couriers. Then you can override the think function inside your hero file.
 
-* MinionThink( hMinionUnit )
+-   MinionThink( hMinionUnit )
 
 This function will be called once per frame for every minion under control by a bot. For example, if you implemented it in `bot_beastmaster.lua`, it would constantly get called both for your boar and hawk while they're summoned and alive. The handle to the bear/hawk unit is passed in as hMinionUnit. Action commands that are usable on your hero are usable on the passed-in hMinionUnit.
 
@@ -124,23 +124,27 @@ This function will be called once per frame for every minion under control by a 
 
 If you'd like to handle hero picking and lane assignment, you can implement the following functions in a `hero_selection.lua` file:
 
-* Think() - Called every frame. Responsible for selecting heroes for bots.
-* UpdateLaneAssignments() - Called every frame prior to the game starting. Returns ten PlayerID-Lane pairs.
-* GetBotNames() - Called once, returns a table of player names.
+-   Think() - Called every frame. Responsible for selecting heroes for bots.
+-   UpdateLaneAssignments() - Called every frame prior to the game starting. Returns ten PlayerID-Lane pairs.
+-   GetBotNames() - Called once, returns a table of player names.
 
 ### 2.6 Team Level Desires
 
 If you'd like to supply team-level desires, you can implement the following functions in a `team_desires.lua` file:
 
-* TeamThink() - Called every frame. Provides a single think call for your entire team.
-* UpdatePushLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for pushing the top, middle, and bottom lanes, respectively.
-* UpdateDefendLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for defending the top, middle, and bottom lanes, respectively.
-* UpdateFarmLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for farming the top, middle, and bottom lanes, respectively.
-* UpdateRoamDesire() - Called every frame. Returns a floating point value between 0 and 1 and a unit handle that represents the desire for someone to roam and gank a specified target.
-* UpdateRoshanDesire() - Called every frame. Returns a floating point value between 0 and 1 that represents the desire for the team to kill Roshan.
+-   TeamThink() - Called every frame. Provides a single think call for your entire team.
+-   UpdatePushLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for pushing the top, middle, and bottom lanes, respectively.
+-   UpdateDefendLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for defending the top, middle, and bottom lanes, respectively.
+-   UpdateFarmLaneDesires() - Called every frame. Returns floating point values between 0 and 1 that represent the desires for farming the top, middle, and bottom lanes, respectively.
+-   UpdateRoamDesire() - Called every frame. Returns a floating point value between 0 and 1 and a unit handle that represents the desire for someone to roam and gank a specified target.
+-   UpdateRoshanDesire() - Called every frame. Returns a floating point value between 0 and 1 that represents the desire for the team to kill Roshan.
 
 If any of these functions are not implemented, it will fall back to the default C++ implementation.
 
 ## 3. Common module
 
 Some modules that can be reused are placed under the `./util` folder.
+
+### 4. New Rule
+
+AllPickLogic() -> GetTeam() -> GetPicks()
