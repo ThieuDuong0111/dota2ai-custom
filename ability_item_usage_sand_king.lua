@@ -23,8 +23,8 @@ ability_item_usage_generic.InitAbility(Abilities, AbilitiesReal, Talents)
 
 local AbilityToLevelUp =
 {
-	Abilities[3],
 	Abilities[1],
+	Abilities[3],
 	Abilities[2],
 	Abilities[2],
 	Abilities[2],
