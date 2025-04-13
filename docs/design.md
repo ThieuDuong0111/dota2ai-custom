@@ -145,6 +145,6 @@ If any of these functions are not implemented, it will fall back to the default 
 
 Some modules that can be reused are placed under the `./util` folder.
 
-### 4. New Rule
+## 4. New Rule
 
 AllPickLogic() -> GetTeam() -> GetPicks()

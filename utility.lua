@@ -82,7 +82,7 @@ function utilityModule.PointToPointDistance(a, b)
 	local x2 = b.x
 	local y1 = a.y
 	local y2 = b.y
-	return math.sqrt(math.pow((y2 - y1), 2) + math.pow((x2 - x1), 2))
+	return math.sqrt(pow((y2 - y1), 2) + pow((x2 - x1), 2))
 end
 
 function utilityModule.GetDistance(a, b)
