@@ -16,12 +16,11 @@ X.ItemsToBuy =
 	"item_magic_wand",
 	"item_blink", --跳刀
 	"item_vladmir",
-	"item_medallion_of_courage",
-	"item_solar_crest",
+	"item_mage_slayer",
+	"item_shivas_guard",
 	"item_aghanims_shard",
 	"item_overwhelming_blink",
-	"item_helm_of_the_overlord", --level 2 helm dominator 7.30
-	"item_shivas_guard",
+	"item_ultimate_scepter_2",
 }
 
 return X

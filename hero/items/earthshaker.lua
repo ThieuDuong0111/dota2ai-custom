@@ -11,7 +11,7 @@ X.ItemsToBuy =
 	-- "item_flask",
 	"item_clarity",
 	"item_boots",
-	"item_magic_wand", --大魔棒7.14
+	"item_bracer", --大魔棒7.14
 	"item_arcane_boots", --秘法
 	"item_blink", --跳刀
 	"item_force_staff", --推推7.14

@@ -1,20 +1,7 @@
 local U = {}
 
 local dota2team = {
-
 	[1] = {
-		['name'] = "Team Spirit";
-		['alias'] = "TSpirit";
-		['players'] = {
-			'RADDAN',
-			'Larl',
-			'Collapse',
-			'rue',
-			'Miposhka'
-		};
-		['sponsorship'] = 'BetBoom';
-	},
-	[2] = {
 		['name'] = "Team Falcons";
 		['alias'] = "Falcons";
 		['players'] = {
@@ -25,6 +12,18 @@ local dota2team = {
 			'Sneyking'
 		};
 		['sponsorship'] = 'stcplay';
+	},
+	[2] = {
+		['name'] = "Team Spirit";
+		['alias'] = "TSpirit";
+		['players'] = {
+			'RADDAN',
+			'Larl',
+			'Collapse',
+			'rue',
+			'Miposhka'
+		};
+		['sponsorship'] = 'BetBoom';
 	}
 }
 

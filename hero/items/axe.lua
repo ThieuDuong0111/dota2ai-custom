@@ -7,17 +7,19 @@ local X = {}
 X.ItemsToBuy =
 {
 	"item_tango",
-	"item_tango",
+	-- "item_tango",
 	"item_enchanted_mango",
 	"item_quelling_blade",
 	"item_vanguard",
 	"item_phase_boots", --相位
 	"item_blink", --跳刀
 	"item_blade_mail",
+	"item_crimson_guard",
 	"item_aghanims_shard",
 	"item_black_king_bar", --BKB
 	"item_lotus_orb", --清莲宝珠,
-	"item_assault",
+	"item_ultimate_scepter_2",
+	-- "item_assault",
 	"item_overwhelming_blink",
 }
 

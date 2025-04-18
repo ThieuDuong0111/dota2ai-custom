@@ -18,6 +18,7 @@ X.ItemsToBuy =
 	"item_mekansm", --梅肯
 	"item_aghanims_shard",
 	"item_ultimate_scepter", 
+	"item_octarine_core",
 	-- "item_ghost",
 	"item_guardian_greaves", --卫士胫甲
 	-- "item_solar_crest", --大勋章7.20

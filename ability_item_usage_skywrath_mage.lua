@@ -29,19 +29,19 @@ local AbilityToLevelUp =
 	Abilities[1],
 	Abilities[3],
 	Abilities[1],
-	Abilities[4],
+	Abilities[6],
 	Abilities[1],
 	Abilities[2],
 	Abilities[3],
 	"talent",
 	Abilities[3],
-	Abilities[4],
+	Abilities[6],
 	Abilities[3],
 	Abilities[2],
 	"talent",
 	Abilities[2],
 	"nil",
-	Abilities[4],
+	Abilities[6],
 	"nil",
 	"talent",
 	"nil",
@@ -384,9 +384,9 @@ end
 -- 7.30 new ability shield of the scion (passive)
 
 -- skywrath_mage_mystic_flare
-Consider[5] = function()
+Consider[6] = function()
 
-	local ability = AbilitiesReal[5]
+	local ability = AbilitiesReal[6]
 
 	if not ability:IsFullyCastable() then
 		return BOT_ACTION_DESIRE_NONE, 0;

@@ -20,19 +20,19 @@ local AbilityToLevelUp = {
     Abilities[1],
     Abilities[2],
     Abilities[1],
-    Abilities[4],
+    Abilities[5],
     Abilities[1],
     Abilities[3],
     Abilities[2],
     "talent",
     Abilities[2],
-    Abilities[4],
+    Abilities[5],
     Abilities[3],
     Abilities[3],
     "talent",
     Abilities[3],
     "nil",
-    Abilities[4],
+    Abilities[5],
     "nil",
     "talent",
     "nil",
@@ -94,95 +94,36 @@ local CanCast = {
 -- pudge_meat_hook
 Consider[1] = function()
     local ability = AbilitiesReal[1]
-    if not ability:IsFullyCastable() or npcBot:IsChanneling() then
-        return 0
-    end
-    local castPoint = ability:GetCastPoint()
-    local range = ability:GetSpecialValueInt("hook_distance")
-    local searchRadius = ability:GetSpecialValueInt("hook_width")
-    local hookSpeed = ability:GetSpecialValueFloat("hook_speed")
-    local allNearbyUnits = AbilityExtensions:GetNearbyAllUnits(npcBot, range):Remove(npcBot)
-    local function NotBlockedByAnyUnit(line, target, distance)
-        return AbilityExtensions:Remove(allNearbyUnits, target):All(function(t)
-            local closeEnough = AbilityExtensions:GetPointToLineDistance(t:GetLocation(), line) <=
-                searchRadius + math.min(0, t:GetBoundingRadius())
-            local mayHook = closeEnough and distance > GetUnitToUnitDistance(npcBot, t)
-            return not mayHook or t:IsInvulnerable()
-        end)
+    if not ability:IsFullyCastable() then
+        return BOT_ACTION_DESIRE_NONE, 0;
     end
 
-    local function T(target)
-        if not CanCast[1](target) then
-            return false
+    local CastRange = ability:GetCastRange();  -- Lấy phạm vi của skill
+    local Radius = ability:GetAOERadius();     -- Lấy bán kính của skill
+    local Damage = ability:GetAbilityDamage(); -- Lấy sát thương của skill
+
+    -- Lấy các hero địch trong phạm vi
+    local enemies = npcBot:GetNearbyHeroes(CastRange, true, BOT_MODE_NONE);
+    local target = nil;
+    
+    -- Tìm kiếm mục tiêu để hook (lựa chọn hero gần nhất)
+    for _, enemy in pairs(enemies) do
+        if enemy:IsAlive() and GetUnitToUnitDistance(npcBot, enemy) <= CastRange then
+            target = enemy;
+            break;
         end
-        local point = target:GetExtrapolatedLocation(GetUnitToUnitDistance(npcBot, target) / hookSpeed + castPoint)
-        local distance = GetUnitToLocationDistance(npcBot, point)
-        local line = AbilityExtensions:GetLine(npcBot:GetLocation(), point)
-        local result = GetUnitToLocationDistance(npcBot, point) <= range and NotBlockedByAnyUnit(line, target, distance)
-        return result
     end
 
-    if AbilityExtensions:IsAttackingEnemies(npcBot) then
-        local enemies = AbilityExtensions:GetNearbyNonIllusionHeroes(npcBot, range, true, BOT_MODE_NONE)
-        enemies = AbilityExtensions:SortByMaxFirst(enemies, function(t)
-            return GetUnitToUnitDistance(npcBot, t)
-        end)
-        enemies = AbilityExtensions:Filter(enemies, T)
-        if #enemies ~= 0 then
-            return BOT_MODE_DESIRE_HIGH,
-                enemies[1]:GetExtrapolatedLocation(GetUnitToUnitDistance(npcBot, enemies[1]) / hookSpeed)
-        end
-        do
-            local ally = AbilityExtensions:GetNearbyNonIllusionHeroes(npcBot, range, false, BOT_MODE_NONE):
-                Filter(function(t)
-                    return t:IsStunned() or t:IsRooted()
-                end):First(T)
-            if ally then
-                return BOT_MODE_DESIRE_HIGH,
-                    ally:GetExtrapolatedLocation(GetUnitToUnitDistance(npcBot, enemies[1]) / hookSpeed)
-            end
+    -- Nếu tìm thấy mục tiêu và có thể dùng skill
+    if target ~= nil then
+        -- Kiểm tra liệu có đủ mana và cooldown
+        if npcBot:GetMana() >= ability:GetManaCost() then
+            -- Sử dụng skill để kéo mục tiêu
+            return BOT_ACTION_DESIRE_HIGH, target:GetLocation();  -- Tương tác với skill tại vị trí của mục tiêu
         end
     end
-    if AbilityExtensions:IsAttackingEnemies(npcBot) then
-        do
-            local atos = AbilityExtensions:GetAvailableItem(npcBot, "item_rod_of_atos") or
-                AbilityExtensions:GetAvailableItem(npcBot, "item_gungir")
-            if atos then
-                do
-                    local t = AbilityExtensions:GetNearbyNonIllusionHeroes(npcBot, range):First(function(t)
-                        return not AbilityExtensions:CannotMove(t) and T(t) and AbilityExtensions:NormalCanCast(t)
-                    end)
-                    if t then
-                        if atos:GetName() == "item_rod_of_atos" then
-                            ItemUsage.UseItemOnEntity(npcBot, atos, t)
-                        else
-                            ItemUsage.UseItemOnLocation(npcBot, atos, t:GetLocation())
-                        end
-                        return 0
-                    end
-                end
-            end
-        end
-        do
-            local target = AbilityExtensions:GetTargetIfGood(npcBot)
-            if target then
-                if T(target) then
-                    return BOT_ACTION_DESIRE_HIGH,
-                        target:GetExtrapolatedLocation(GetUnitToUnitDistance(npcBot, target) / hookSpeed + castPoint)
-                end
-            end
-        end
-        do
-            local enemy = AbilityExtensions:GetNearbyNonIllusionHeroes(npcBot, range):First(function(t)
-                return (AbilityExtensions:CannotMove(t) or AbilityExtensions:GetMovementSpeedPercent(t) <= 0.3) and T(t)
-            end)
-            if enemy then
-                return BOT_ACTION_DESIRE_HIGH,
-                    enemy:GetExtrapolatedLocation(GetUnitToUnitDistance(npcBot, enemy) / hookSpeed + castPoint)
-            end
-        end
-    end
-    return 0
+    
+    return BOT_ACTION_DESIRE_NONE, 0;
 end
 
 -- pudge_rot

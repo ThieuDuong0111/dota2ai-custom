@@ -127,7 +127,13 @@ local hero_pool = {
 }
 --recording default bot heroes
 local hero_pool_default_bot = {
+	"npc_dota_hero_abaddon",
+	"npc_dota_hero_alchemist",
+	"npc_dota_hero_abyssal_underlord",
+	"npc_dota_hero_ancient_apparition",
+	"npc_dota_hero_arc_warden",
 	"npc_dota_hero_axe",
+	"npc_dota_hero_antimage",
 	"npc_dota_hero_bane",
 	"npc_dota_hero_bloodseeker",
 	"npc_dota_hero_bounty_hunter",
@@ -319,7 +325,7 @@ local allBotHeroes = {
 	"npc_dota_hero_abyssal_underlord",
 	"npc_dota_hero_ancient_apparition",
 	"npc_dota_hero_arc_warden",
-	"npc_dota_hero_axe",
+	-- "npc_dota_hero_axe",
 	"npc_dota_hero_antimage",
 
 	"npc_dota_hero_batrider",
@@ -640,7 +646,7 @@ function Think()
 		if GetGameState() == GAME_STATE_HERO_SELECTION then
 			InstallChatCallback(function(attr) SelectHeroChatCallback(attr.player_id, attr.string, attr.team_only); end);
 		end
-		AllPickLogic();
+		NewTurboModeLogic();
 		--print("GAME MODE NOT SUPPORTED")
 	end
 end
@@ -652,7 +658,7 @@ function NewTurboModeLogic()
 		for i, id in pairs(GetTeamPlayers(GetTeam())) do
 			if IsPlayerBot(id) and IsPlayerInHeroSelectionControl(id) and GetSelectedHeroName(id) == "" then
 				if debugMode then
-					hero = GetRandomHero2()
+					hero = RandomHero()
 				else
 					hero = PickRightHero(i - 1)
 				end
@@ -752,11 +758,11 @@ function AllPickLogic()
 		return
 	end
 
-	local picks = GetPicks();
+	-- local picks = GetPicks();
 	local selectedHeroes = {};
-	for slot, hero in pairs(picks) do
-		selectedHeroes[hero] = true;
-	end
+	-- for slot, hero in pairs(picks) do
+	-- 	selectedHeroes[hero] = true;
+	-- end
 
 	if (debugMode == false)
 	then
@@ -949,29 +955,29 @@ end
 
 --Pick hero based on role
 function PickRightHero(slot)
-	local initHero = GetRandomHero2();
+	local initHero = RandomHero();
 	local Team = GetTeam();
 	if slot == 0 then
 		while not role.CanBeMidlaner(initHero) do
-			initHero = GetRandomHero2();
+			initHero = RandomHero();
 		end
 	elseif slot == 1 then
 		while (Team == TEAM_RADIANT and not role.CanBeOfflaner(initHero)) or
 			(Team == TEAM_DIRE and not role.CanBeSafeLaneCarry(initHero)) do
-			initHero = GetRandomHero2();
+			initHero = RandomHero();
 		end
 	elseif slot == 2 then
 		while not role.CanBeSupport(initHero) do
-			initHero = GetRandomHero2();
+			initHero = RandomHero();
 		end
 	elseif slot == 3 then
 		while not role.CanBeSupport(initHero) do
-			initHero = GetRandomHero2();
+			initHero = RandomHero();
 		end
 	elseif slot == 4 then
 		while (Team == TEAM_RADIANT and not role.CanBeSafeLaneCarry(initHero)) or
 			(Team == TEAM_DIRE and not role.CanBeOfflaner(initHero)) do
-			initHero = GetRandomHero2();
+			initHero = RandomHero();
 		end
 	end
 	return initHero;
@@ -1079,31 +1085,6 @@ end
 
 -- first, check the list of required heroes and pick from those
 -- then try the whole bot pool
-function GetRandomHero2()
-	local hero;
-	local picks = GetPicks();
-	local selectedHeroes = {};
-
-	for slot, hero in pairs(picks) do
-		selectedHeroes[hero] = true;
-	end
-
-	if testMode then
-		hero = requiredHeroes[RandomInt(1, #requiredHeroes)];
-	else
-		hero = nil;
-	end
-
-	if (hero == nil) then
-		hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
-	end
-
-	while (selectedHeroes[hero] == true) do
-		hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
-	end
-
-	return hero;
-end
 
 -- Returns true if, for the specified team, all the Human players have picked a hero.
 function AreHumanPlayersReady(team)
@@ -1545,6 +1526,16 @@ end
 
 --Random hero which is non picked, non banned, or non human picked heroes if the human is the captain
 function RandomHero()
+	local hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
+	while (
+		IsUnavailableHero(hero) or IsCMPickedHero(GetTeam(), hero) or IsCMPickedHero(GetOpposingTeam(), hero) or
+			IsCMBannedHero(hero)) do
+		hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
+	end
+	return hero;
+end
+
+function GetRandomHero2()
 	local hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
 	while (
 		IsUnavailableHero(hero) or IsCMPickedHero(GetTeam(), hero) or IsCMPickedHero(GetOpposingTeam(), hero) or

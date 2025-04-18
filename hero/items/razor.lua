@@ -21,13 +21,14 @@ X.ItemsToBuy =
 	"item_wraith_band",
 	"item_flask",
 	"item_magic_wand",
-	"item_arcane_boots",
-	"item_eternal_shroud",
+	"item_power_treads",
+	"item_manta",
 	"item_aghanims_shard",
-	"item_bloodstone",
-	"item_kaya_and_sange",
-	"item_heart",
+	"item_butterfly",
+	"item_assault",
+	"item_satanic",
 	"item_ultimate_scepter",
+	"item_refresher",
 	"item_ultimate_scepter_2"
 	
 	

@@ -12,7 +12,7 @@ X.ItemsToBuy =
 	"item_enchanted_mango",
 	-- "item_flask",
 	-- "item_clarity",
-	"item_arcane_boots",
+	"item_tranquil_boots",
 	-- "item_bracer",
 	"item_glimmer_cape", --微光
 	"item_force_staff", --推推7.14

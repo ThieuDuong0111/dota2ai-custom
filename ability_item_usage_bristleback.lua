@@ -24,19 +24,19 @@ local AbilityToLevelUp = {
     Abilities[2],
     Abilities[1],
     Abilities[2],
-    Abilities[4],
+    Abilities[5],
     Abilities[2],
     Abilities[3],
     Abilities[3],
     "talent",
     Abilities[3],
-    Abilities[4],
+    Abilities[5],
     Abilities[1],
     Abilities[1],
     "talent",
     Abilities[1],
     "nil",
-    Abilities[4],
+    Abilities[5],
     "nil",
     "talent",
     "nil",
@@ -274,8 +274,8 @@ Consider[2] = function()
     return BOT_ACTION_DESIRE_NONE, 0
 end
 -- hairball
-Consider[4] = function()
-    local ability = AbilitiesReal[4]
+Consider[5] = function()
+    local ability = AbilitiesReal[5]
     if not ability:IsFullyCastable() or ability:IsHidden() then
         return BOT_ACTION_DESIRE_NONE
     end

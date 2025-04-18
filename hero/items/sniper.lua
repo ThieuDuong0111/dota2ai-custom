@@ -13,7 +13,7 @@ X.ItemsToBuy =
 	-- "item_phase_boots", --相位7.21
 	"item_power_treads",
 	"item_maelstrom",
-	"item_desolator",
+	"item_butterfly",
 	"item_hurricane_pike",
 	"item_black_king_bar", --bkb
 	"item_hyperstone",

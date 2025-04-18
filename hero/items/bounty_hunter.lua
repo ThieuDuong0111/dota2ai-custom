@@ -8,7 +8,7 @@ X.ItemsToBuy =
 {
 	-- "item_orb_of_venom", -- 毒球
 	"item_tango",
-	"item_phase_boots",
+	"item_tranquil_boots",
 	"item_magic_wand", --大魔棒7.14
 	"item_falcon_blade",
 	"item_ancient_janggo", --战鼓
@@ -21,6 +21,7 @@ X.ItemsToBuy =
 	"item_black_king_bar", --BKB
 	"item_lotus_orb", --清莲宝珠
 	"item_ultimate_scepter_2",
+	"item_boots_of_bearing",
 	"item_sheepstick",
 }
 

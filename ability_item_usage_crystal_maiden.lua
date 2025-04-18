@@ -29,19 +29,19 @@ local AbilityToLevelUp =
 	Abilities[3],
 	Abilities[3],
 	Abilities[1],
-	Abilities[4],
+	Abilities[6],
 	Abilities[1],
 	Abilities[1],
 	Abilities[3],
 	"talent",
 	Abilities[3],
-	Abilities[4],
+	Abilities[6],
 	Abilities[2],
 	Abilities[2],
 	"talent",
 	Abilities[2],
 	"nil",
-	Abilities[4],
+	Abilities[6],
 	"nil",
 	"talent",
 	"nil",
@@ -395,8 +395,8 @@ Consider[2] = function()
 end
 
 -- crystal_maiden_freezing_field
-Consider[4] = function()
-	local abilityNumber = 4
+Consider[6] = function()
+	local abilityNumber = 6
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------

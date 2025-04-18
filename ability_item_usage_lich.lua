@@ -28,19 +28,19 @@ local abilityTree = {
 	abilityNames[2],
 	abilityNames[3],
 	abilityNames[2],
-	abilityNames[5],
+	abilityNames[6],
 	abilityNames[2],
 	abilityNames[1],
 	abilityNames[1],
 	"talent",
 	abilityNames[1],
-	abilityNames[5],
+	abilityNames[6],
 	abilityNames[3],
 	abilityNames[3],
 	"talent",
 	abilityNames[3],
 	"nil",
-	abilityNames[5],
+	abilityNames[6],
 	"nil",
 	"talent",
 	"nil",
@@ -516,9 +516,9 @@ consider[4] = function()
 
 end
 
-consider[5] = function()
+consider[6] = function()
 	--Target Ability Example
-	local abilityIndex = 5
+	local abilityIndex = 6
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------

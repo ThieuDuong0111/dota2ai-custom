@@ -10,15 +10,14 @@ X.ItemsToBuy =
 	"item_enchanted_mango",
 	"item_enchanted_mango",
 	"item_quelling_blade",
-	-- "item_falcon_blade", 
+	"item_phase_boots",
 	"item_vanguard", --先锋
-	"item_phase_boots", --相位
-	"item_ultimate_scepter",
-	-- "item_magic_wand",
-	-- "item_crimson_guard",
-	"item_heart", --龙心7.20
-	"item_black_king_bar", --BKB
+	"item_crimson_guard",
+	"item_veil_of_discord",
 	"item_shivas_guard",
+	"item_heart",
+	"item_black_king_bar",
+	"item_ultimate_scepter",
 	"item_ultimate_scepter_2",
 	"item_lotus_orb",
 }

@@ -12,7 +12,7 @@ X.ItemsToBuy =
 	"item_magic_wand",
 	"item_boots",
 	"item_javelin",
-	"item_phase_boots",
+	"item_power_treads",
 	"item_maelstrom",
 	"item_blink",
 	"item_black_king_bar",

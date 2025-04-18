@@ -7,17 +7,18 @@ local X = {}
 X.ItemsToBuy =
 {
 	"item_tango",
-	"item_wraith_band", --系带
-	"item_flask",
-	"item_wraith_band", --系带
-	"item_power_treads", --假腿7.21
-	"item_blade_mail",
-	"item_eternal_shroud",
-	"item_hurricane_pike",
-	"item_manta",
+	"item_wraith_band",
+	"item_boots",
+	"item_orchid",
+	"item_hurricane_pike",--假腿7.21
+	"item_butterfly",
+	"item_aghanims_shard",
+	"item_bloodthorn",
+	"item_heart",
+	"item_nullifier",
 	"item_ultimate_scepter",
 	"item_ultimate_scepter_2",
-	"item_heart",
+
 	-- "item_maelstrom",
 	-- "item_hurricane_pike", --大推推7.20
 	-- "item_black_king_bar", --bkb

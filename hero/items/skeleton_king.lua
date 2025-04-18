@@ -10,6 +10,7 @@ X.ItemsToBuy =
 	"item_bracer",
 	"item_magic_wand", --大魔棒7.14
 	"item_power_treads",
+	"item_radiance",
 	"item_desolator",
 	"item_aghanims_shard",
 	"item_black_king_bar", --bkb
