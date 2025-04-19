@@ -36,7 +36,7 @@ local doneHeroes = {
 	"npc_dota_hero_weaver",
 	--Pos 2
 	"npc_dota_hero_arc_warden",
-	"npc_dota_hero_broodmother",
+	-- "npc_dota_hero_broodmother",
 	"npc_dota_hero_death_prophet",
 	"npc_dota_hero_dragon_knight",
 	"npc_dota_hero_earthshaker",
