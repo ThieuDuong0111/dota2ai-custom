@@ -14,7 +14,7 @@ X.ItemsToBuy =
 	"item_null_talisman",
 	"item_boots",
 	"item_magic_wand", --大魔棒7.14
-	-- "item_power_treads",
+	"item_power_treads",
 	"item_dragon_lance", --魔龙枪
 	"item_witch_blade",
 	"item_black_king_bar",
@@ -24,7 +24,6 @@ X.ItemsToBuy =
 	"item_sheepstick", --羊刀
 	"item_travel_boots",
 	"item_ultimate_scepter_2",
-	-- "item_monkey_king_bar" --金箍棒7.14
 	"item_revenants_brooch",
 	"item_travel_boots_2"
 }

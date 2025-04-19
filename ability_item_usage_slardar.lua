@@ -29,19 +29,19 @@ local AbilityToLevelUp =
 	Abilities[3],
 	Abilities[1],
 	Abilities[2],
-	Abilities[4],
+	Abilities[5],
 	Abilities[2],
 	Abilities[2],
 	Abilities[1],
 	"talent",
 	Abilities[1],
-	Abilities[4],
+	Abilities[5],
 	Abilities[3],
 	Abilities[3],
 	"talent",
 	Abilities[3],
 	"nil",
-	Abilities[4],
+	Abilities[5],
 	"nil",
 	"talent",
 	"nil",
@@ -308,83 +308,49 @@ local function CorrosiveHazeRemainingDurationLessThan(target, time)
 	return AbilityExtensions:GetMagicImmuneRemainingDuration(target, "modifier_slardar_amplify_damage") <= time
 end
 
-Consider[4] = function()
-	local abilityNumber = 4
+Consider[5] = function()
+    local abilityNumber = 5
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------
-	local ability = AbilitiesReal[abilityNumber];
-
-	if not ability:IsFullyCastable() then
-		return BOT_ACTION_DESIRE_NONE, 0;
-	end
-
-	local CastRange = ability:GetCastRange();
-	local Damage = ability:GetAbilityDamage();
-
-	local allys = npcBot:GetNearbyHeroes(1200, false, BOT_MODE_NONE);
-	local enemys = npcBot:GetNearbyHeroes(CastRange + 300, true, BOT_MODE_NONE)
-	local WeakestEnemy, HeroHealth = utility.GetWeakestUnit(enemys)
-	local creeps = npcBot:GetNearbyCreeps(CastRange + 300, true)
-	local WeakestCreep, CreepHealth = utility.GetWeakestUnit(creeps)
-
-	--------------------------------------
-	-- Global high-priorty usage
-	--------------------------------------
-	--Try to kill enemy hero
-	if (npcBot:GetActiveMode() ~= BOT_MODE_RETREAT)
-	then
-		if (WeakestEnemy ~= nil)
-		then
-			if (CanCast[abilityNumber](WeakestEnemy))
-			then
-				if (
-					HeroHealth <= WeakestEnemy:GetActualIncomingDamage(Damage, DAMAGE_TYPE_PHYSICAL) or
-						(
-						HeroHealth <= WeakestEnemy:GetActualIncomingDamage(GetComboDamage(), DAMAGE_TYPE_PHYSICAL) and
-							npcBot:GetMana() > ComboMana)) and CorrosiveHazeRemainingDurationLessThan(WeakestEnemy, 6)
-				then
-					return BOT_ACTION_DESIRE_HIGH, WeakestEnemy;
-				end
-			end
-		end
-	end
-
-	--------------------------------------
-	-- Mode based usage
-	--------------------------------------
-	-- If my mana is enough,use it at enemy
-	if (npcBot:GetActiveMode() ~= BOT_MODE_RETREAT)
-	then
-		if ((ManaPercentage > 0.4 or npcBot:GetMana() > ComboMana))
-		then
-			for _, npcEnemy in pairs(enemys) do
-				if CanCast[abilityNumber](npcEnemy) and CorrosiveHazeRemainingDurationLessThan(npcEnemy, 12)
-				then
-					return BOT_ACTION_DESIRE_LOW, npcEnemy;
-				end
-			end
-		end
-	end
-
-	-- If we're going after someone
-	if (npcBot:GetActiveMode() == BOT_MODE_ROAM or
-		npcBot:GetActiveMode() == BOT_MODE_TEAM_ROAM or
-		npcBot:GetActiveMode() == BOT_MODE_DEFEND_ALLY or
-		npcBot:GetActiveMode() == BOT_MODE_ATTACK)
-	then
-		local npcEnemy = npcBot:GetTarget();
-
-		if (npcEnemy ~= nil)
-		then
-			if CanCast[abilityNumber](npcEnemy) and CorrosiveHazeRemainingDurationLessThan(npcEnemy, 6)
-			then
-				return BOT_ACTION_DESIRE_MODERATE, npcEnemy
-			end
-		end
-	end
-
-	return BOT_ACTION_DESIRE_NONE, 0;
+    local ability = AbilitiesReal[abilityNumber]
+    if not ability:IsFullyCastable() then
+        return BOT_ACTION_DESIRE_NONE
+    end
+    local CastRange = Clamp(ability:GetCastRange(), 0, 1599)
+    local realEnemies = fun1:GetNearbyNonIllusionHeroes(npcBot, CastRange):Filter(function(it)
+        return fun1:SpellCanCast(it) and it:IsHero() and fun1:MayNotBeIllusion(npcBot, it) and A.Unit.IsNotCreepHero(it)
+    end):Map(function(it)
+        return {
+            it,
+            it:GetHealth() * HasTrackModifierPenalty(it),
+        }
+    end):SortByMinFirst(function(it)
+        return it[2]
+    end)
+    do
+        local t = realEnemies:First()
+        if t then
+            local target = t[1]
+            if fun1:IsFarmingOrPushing(npcBot) or npcBot:GetActiveMode() == BOT_MODE_LANING then
+                if ManaPercentage >= 0.7 then
+                    return BOT_ACTION_DESIRE_MODERATE, target
+                end
+                if fun1:GetHealthPercent(target) <= 0.5 then
+                    return BOT_ACTION_DESIRE_HIGH, target
+                end
+            else
+                return BOT_ACTION_DESIRE_HIGH, target
+            end
+        end
+    end
+    do
+        local target = fun1:GetTargetIfGood(npcBot)
+        if target and target:GetTeam() ~= npcBot:GetTeam() and A.Unit.IsNotCreepHero(target) then
+            return BOT_ACTION_DESIRE_HIGH, target
+        end
+    end
+    return BOT_ACTION_DESIRE_NONE
 end
 
 AbilityExtensions:AutoModifyConsiderFunction(npcBot, Consider, AbilitiesReal)

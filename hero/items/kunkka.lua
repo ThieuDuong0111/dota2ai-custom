@@ -11,6 +11,7 @@ X.ItemsToBuy = {
 	"item_phase_boots", --相位7.21
 	"item_magic_wand", --大魔棒7.14
 	"item_blade_mail",
+	"item_radiance",
 	"item_black_king_bar", --bkb
 	"item_ultimate_scepter",
 	"item_greater_crit", --大炮

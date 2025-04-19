@@ -13,17 +13,12 @@ X.ItemsToBuy =
 	"item_boots",
 	"item_phase_boots",
 	"item_radiance",
-	"item_mantle",
+	"item_sange_and_yasha",
+	"item_shivas_guard",
 	"item_assault",
-	"item_greater_crit"
-	-- "item_vladmir", --祭品7.21
-	-- "item_mekansm", --梅肯
-	-- "item_guardian_greaves", --卫士胫甲
-	-- "item_pipe", --笛子
-	-- "item_helm_of_the_overlord", --level 2 helm dominator 7.30
-	-- "item_ultimate_scepter", --蓝杖
-	-- "item_ultimate_scepter_2",
-	-- "item_lotus_orb" --清莲宝珠
+	"item_skadi",
+	"item_aghanims_shard",
+	"item_ultimate_scepter_2"
 }
 
 return X

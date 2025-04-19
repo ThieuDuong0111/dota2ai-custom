@@ -13,12 +13,11 @@ X.ItemsToBuy =
 	-- "item_phase_boots", --相位7.21
 	"item_power_treads",
 	"item_maelstrom",
+	"item_greater_crit",
 	"item_butterfly",
 	"item_hurricane_pike",
 	"item_black_king_bar", --bkb
-	"item_hyperstone",
-	"item_recipe_mjollnir", --大雷锤
-	"item_greater_crit",
+	"item_mjollnir", --大雷锤
 	"item_ultimate_scepter_2"
 }
 

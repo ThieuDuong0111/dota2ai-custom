@@ -12,16 +12,15 @@ X.ItemsToBuy =
 	"item_null_talisman",
 	-- "item_magic_wand", --大魔棒7.14
 	"item_bottle",
-	"item_phase_boots",
-	"item_aether_lens",
+	"item_travel_boots_1",
+	"item_maelstrom",
+	"item_lesser_crit",
 	"item_black_king_bar",
-	"item_kaya",
-	"item_kaya_and_sange",
-	"item_ultimate_scepter", --蓝杖
-	-- "item_invis_sword",
-	"item_shivas_guard",
-	-- "item_sheepstick",
-	-- "item_wind_waker",
+	"item_mjollnir",
+	"item_aghanims_shard",
+	"item_greater_critr",
+	"item_monkey_king_bar",
+	"item_sphere",
 	"item_ultimate_scepter_2",
 }
 

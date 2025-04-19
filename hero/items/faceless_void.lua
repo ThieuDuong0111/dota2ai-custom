@@ -7,11 +7,6 @@ local X = {}
 X.ItemsToBuy =
 {
 	"item_tango",
-	"item_slippers",
-	"item_circlet",
-	"item_slippers",
-	"item_circlet",
-	"item_wraith_band",
 	"item_wraith_band",
 	"item_power_treads", --假腿7.21
 	"item_magic_wand", --大魔棒7.14

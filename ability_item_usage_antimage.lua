@@ -29,19 +29,19 @@ local AbilityToLevelUp = {
 	Abilities[1],
 	Abilities[3],
 	Abilities[2],
-	Abilities[5],
+	Abilities[6],
 	Abilities[2],
 	Abilities[2],
 	Abilities[1],
 	"talent",
 	Abilities[1],
-	Abilities[5],
+	Abilities[6],
 	Abilities[3],
 	Abilities[3],
 	"talent",
 	Abilities[3],
 	"nil",
-	Abilities[5],
+	Abilities[6],
 	"nil",
 	"talent",
 	"nil",
@@ -290,8 +290,8 @@ Consider[3] = function()
 end
 
 -- antimage_mana_void
-Consider[4] = function()
-	local abilityNumber = 4
+Consider[6] = function()
+	local abilityNumber = 6
 	local ability = AbilitiesReal[abilityNumber]
 	if not ability:IsFullyCastable() then
 		return 0

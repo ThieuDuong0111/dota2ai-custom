@@ -10,16 +10,17 @@ X.ItemsToBuy =
 	"item_tango",
 	"item_flask",
 	"item_wraith_band", --系带
-	"item_wraith_band", --系带
 	"item_boots",
 	"item_magic_wand",
-	"item_phase_boots",
-	"item_ancient_janggo", --战鼓7.20
-	"item_monkey_king_bar", --金箍棒7.14
-	"item_black_king_bar", --bkb
+	"item_power_treads",
+	"item_lesser_crit", --战鼓7.20
+	"item_ultimate_scepter",
+	"item_sange_and_yasha", 
+	"item_black_king_bar",
+	"item_greater_crit",
 	"item_aghanims_shard",
-	"item_sange_and_yasha", --双刀
-	-- "item_hurricane_pike", --大推推7.20
+	"item_satanic",
+	"item_ultimate_scepter_2",
 	"item_butterfly", --蝴蝶
 }
 

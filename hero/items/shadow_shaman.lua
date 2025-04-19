@@ -13,7 +13,6 @@ X.ItemsToBuy =
 	"item_arcane_boots",
 	"item_blink",
 	"item_aether_lens",
-	"item_ghost",
 	"item_force_staff",
 	"item_aghanims_shard",
 	"item_ultimate_scepter", --蓝杖

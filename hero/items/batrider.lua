@@ -15,9 +15,9 @@ X.ItemsToBuy =
 	"item_force_staff", --推推7.14
 	"item_ultimate_scepter", --蓝杖
 	"item_black_king_bar", --bkb
-	"item_cyclone", --风杖
-	"item_ultimate_scepter_2",
+	"item_cyclone",
 	"item_lotus_orb",
+	"item_ultimate_scepter_2",
 	"item_arcane_blink",
 	"item_wind_waker",
 }

@@ -267,8 +267,8 @@ local function HasTrackModifierPenalty(t)
     return fun1:GetModifierRemainingDuration(t, "modifier_bounty_hunter_track") <= 5 and 1 or 0.5
 end
 
-Consider[5] = function()
-    local abilityNumber = 5
+Consider[6] = function()
+    local abilityNumber = 6
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------

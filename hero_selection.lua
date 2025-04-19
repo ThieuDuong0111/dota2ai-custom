@@ -8,324 +8,117 @@ local role = require(GetScriptDirectory() .. "/util/RoleUtility")
 local bnUtil = require(GetScriptDirectory() .. "/util/BotNameUtility")
 local GAMEMODE_TM = 23
 
---recording all dota2 heroes
-local hero_pool = {
-	"npc_dota_hero_abaddon",
-	"npc_dota_hero_abyssal_underlord",
+--recording implemented bots, used in CM mode.
+local doneHeroes = {
+	--Pos 1
 	"npc_dota_hero_alchemist",
 	"npc_dota_hero_antimage",
-	"npc_dota_hero_ancient_apparition",
-	"npc_dota_hero_arc_warden",
-	"npc_dota_hero_axe",
-	"npc_dota_hero_bane",
-	"npc_dota_hero_batrider",
-	"npc_dota_hero_beastmaster",
-	"npc_dota_hero_bloodseeker",
-	"npc_dota_hero_bounty_hunter",
-	"npc_dota_hero_brewmaster",
-	"npc_dota_hero_bristleback",
-	"npc_dota_hero_broodmother",
-	"npc_dota_hero_centaur",
 	"npc_dota_hero_chaos_knight",
-	"npc_dota_hero_chen",
 	"npc_dota_hero_clinkz",
-	"npc_dota_hero_rattletrap", -- Clockwerk
-	"npc_dota_hero_crystal_maiden",
-	"npc_dota_hero_dark_seer",
-	"npc_dota_hero_dazzle",
-	"npc_dota_hero_death_prophet",
-	"npc_dota_hero_disruptor",
-	"npc_dota_hero_doom_bringer",
-	"npc_dota_hero_dragon_knight",
 	"npc_dota_hero_drow_ranger",
-	"npc_dota_hero_earth_spirit",
-	"npc_dota_hero_earthshaker",
-	"npc_dota_hero_elder_titan",
-	"npc_dota_hero_ember_spirit",
-	"npc_dota_hero_enchantress",
-	"npc_dota_hero_enigma",
 	"npc_dota_hero_faceless_void",
 	"npc_dota_hero_gyrocopter",
-	"npc_dota_hero_hoodwink",
-	"npc_dota_hero_huskar",
-	"npc_dota_hero_invoker",
-	"npc_dota_hero_wisp",
-	"npc_dota_hero_jakiro",
 	"npc_dota_hero_juggernaut",
-	"npc_dota_hero_keeper_of_the_light",
-	"npc_dota_hero_kunkka",
-	"npc_dota_hero_legion_commander",
-	"npc_dota_hero_leshrac",
-	"npc_dota_hero_lich",
 	"npc_dota_hero_life_stealer",
-	"npc_dota_hero_lina",
-	"npc_dota_hero_lion",
-	"npc_dota_hero_lone_druid",
 	"npc_dota_hero_luna",
 	"npc_dota_hero_lycan",
-	"npc_dota_hero_magnataur",
-	"npc_dota_hero_medusa",
-	"npc_dota_hero_meepo",
-	"npc_dota_hero_mirana",
-	"npc_dota_hero_morphling",
 	"npc_dota_hero_monkey_king",
-	"npc_dota_hero_naga_siren",
-	"npc_dota_hero_furion", -- Natures prophet
-	"npc_dota_hero_necrolyte",
-	"npc_dota_hero_night_stalker",
-	"npc_dota_hero_nyx_assassin",
-	"npc_dota_hero_ogre_magi",
-	"npc_dota_hero_omniknight",
-	"npc_dota_hero_oracle",
-	"npc_dota_hero_obsidian_destroyer", -- Outworld Devourer
 	"npc_dota_hero_phantom_assassin",
 	"npc_dota_hero_phantom_lancer",
-	"npc_dota_hero_phoenix",
-	"npc_dota_hero_puck",
-	"npc_dota_hero_pudge",
-	"npc_dota_hero_pugna",
-	"npc_dota_hero_queenofpain",
 	"npc_dota_hero_razor",
 	"npc_dota_hero_riki",
-	"npc_dota_hero_rubick",
-	"npc_dota_hero_sand_king",
-	"npc_dota_hero_shadow_demon",
+	"npc_dota_hero_skeleton_king",
+	"npc_dota_hero_spectre",
+	"npc_dota_hero_slark",
+	"npc_dota_hero_sven",
+	"npc_dota_hero_terrorblade",
+	"npc_dota_hero_ursa",
+	"npc_dota_hero_weaver",
+	--Pos 2
+	"npc_dota_hero_arc_warden",
+	"npc_dota_hero_broodmother",
+	"npc_dota_hero_death_prophet",
+	"npc_dota_hero_dragon_knight",
+	"npc_dota_hero_earthshaker",
+	"npc_dota_hero_earth_spirit",
+	"npc_dota_hero_ember_spirit",
+	"npc_dota_hero_huskar",
+	"npc_dota_hero_kunkka",
+	"npc_dota_hero_leshrac",
+	"npc_dota_hero_lina",
+	"npc_dota_hero_magnataur",
+	"npc_dota_hero_naga_siren",
+	"npc_dota_hero_necrolyte",
 	"npc_dota_hero_nevermore",
+	"npc_dota_hero_obsidian_destroyer",
+	"npc_dota_hero_queenofpain",
+	"npc_dota_hero_sniper",
+	"npc_dota_hero_templar_assassin",
+	"npc_dota_hero_tiny",
+	"npc_dota_hero_viper",
+	"npc_dota_hero_windrunner",
+	"npc_dota_hero_zuus",
+	--Pos 3
+	"npc_dota_hero_abaddon",
+	"npc_dota_hero_axe",
+	"npc_dota_hero_batrider",
+	"npc_dota_hero_beastmaster",
+	"npc_dota_hero_bristleback",
+	"npc_dota_hero_centaur",
+	"npc_dota_hero_dark_seer",
+	"npc_dota_hero_doom_bringer",
+	"npc_dota_hero_enigma",
+	"npc_dota_hero_furion",
+	"npc_dota_hero_legion_commander",
+	"npc_dota_hero_night_stalker",
+	"npc_dota_hero_sand_king",
+	"npc_dota_hero_shredder",
+	"npc_dota_hero_slardar",
+	"npc_dota_hero_tidehunter",
+	--Pos 4 and 5
+	"npc_dota_hero_ancient_apparition",
+	"npc_dota_hero_bane",
+	"npc_dota_hero_bounty_hunter",
+	"npc_dota_hero_chen",
+	"npc_dota_hero_crystal_maiden",
+	"npc_dota_hero_dazzle",
+	"npc_dota_hero_disruptor",
+	"npc_dota_hero_enchantress",
+	"npc_dota_hero_elder_titan",
+	"npc_dota_hero_enigma",
+	"npc_dota_hero_hoodwink",
+	"npc_dota_hero_jakiro",
+	"npc_dota_hero_keeper_of_the_light",
+	"npc_dota_hero_lich",
+	"npc_dota_hero_lion",
+	"npc_dota_hero_mirana",
+	"npc_dota_hero_nyx_assassin",
+	"npc_dota_hero_ogre_magi",
+	"npc_dota_hero_oracle",
+	"npc_dota_hero_pugna",
+	"npc_dota_hero_shadow_demon",
 	"npc_dota_hero_shadow_shaman",
 	"npc_dota_hero_silencer",
 	"npc_dota_hero_skywrath_mage",
-	"npc_dota_hero_slardar",
-	"npc_dota_hero_slark",
-	"npc_dota_hero_sniper",
-	"npc_dota_hero_spectre",
-	--"npc_dota_hero_spirit_breaker",
-	"npc_dota_hero_storm_spirit",
-	"npc_dota_hero_sven",
-	"npc_dota_hero_techies",
-	"npc_dota_hero_templar_assassin",
-	"npc_dota_hero_terrorblade",
-	"npc_dota_hero_tidehunter",
-	"npc_dota_hero_shredder",
-	"npc_dota_hero_tinker",
-	"npc_dota_hero_tiny",
+	"npc_dota_hero_spirit_breaker",
 	"npc_dota_hero_treant",
-	"npc_dota_hero_troll_warlord",
 	"npc_dota_hero_tusk",
 	"npc_dota_hero_undying",
-	"npc_dota_hero_ursa",
 	"npc_dota_hero_vengefulspirit",
 	"npc_dota_hero_venomancer",
-	"npc_dota_hero_viper",
-	"npc_dota_hero_visage",
 	"npc_dota_hero_warlock",
-	"npc_dota_hero_weaver",
-	"npc_dota_hero_windrunner",
 	"npc_dota_hero_winter_wyvern",
-	"npc_dota_hero_witch_doctor",
-	"npc_dota_hero_skeleton_king",
-	"npc_dota_hero_zuus",
+	"npc_dota_hero_witch_doctor"
 }
---recording default bot heroes
-local hero_pool_default_bot = {
-	"npc_dota_hero_abaddon",
-	"npc_dota_hero_alchemist",
-	"npc_dota_hero_abyssal_underlord",
-	"npc_dota_hero_ancient_apparition",
-	"npc_dota_hero_arc_warden",
-	"npc_dota_hero_axe",
-	"npc_dota_hero_antimage",
-	"npc_dota_hero_bane",
-	"npc_dota_hero_bloodseeker",
-	"npc_dota_hero_bounty_hunter",
-	"npc_dota_hero_bristleback",
-	"npc_dota_hero_chaos_knight",
-	"npc_dota_hero_crystal_maiden",
-	"npc_dota_hero_dazzle",
-	"npc_dota_hero_death_prophet",
-	"npc_dota_hero_dragon_knight",
-	"npc_dota_hero_drow_ranger",
-	"npc_dota_hero_earthshaker",
-	"npc_dota_hero_hoodwink",
-	"npc_dota_hero_jakiro",
-	"npc_dota_hero_juggernaut",
-	"npc_dota_hero_kunkka",
-	"npc_dota_hero_lich",
-	"npc_dota_hero_lina",
-	"npc_dota_hero_lion",
-	"npc_dota_hero_luna",
-	"npc_dota_hero_necrolyte",
-	"npc_dota_hero_nevermore",
-	"npc_dota_hero_omniknight",
-	"npc_dota_hero_oracle",
-	"npc_dota_hero_phantom_assassin",
-	"npc_dota_hero_pudge",
-	"npc_dota_hero_razor",
-	"npc_dota_hero_sand_king",
-	"npc_dota_hero_skeleton_king",
-	"npc_dota_hero_skywrath_mage",
-	"npc_dota_hero_sniper",
-	"npc_dota_hero_sven",
-	"npc_dota_hero_tidehunter",
-	"npc_dota_hero_tiny",
-	"npc_dota_hero_vengefulspirit",
-	"npc_dota_hero_viper",
-	"npc_dota_hero_warlock",
-	"npc_dota_hero_windrunner",
-	"npc_dota_hero_witch_doctor",
-	"npc_dota_hero_zuus"
-}
---recoding implemented bots, using in test.
-local hero_pool_test = {
-	-- "npc_dota_hero_zuus",
-	-- "npc_dota_hero_skywrath_mage",
-	-- "npc_dota_hero_ogre_magi",
-	-- "npc_dota_hero_chaos_knight",
-	-- "npc_dota_hero_viper",
+local testHeroes = doneHeroes
 
-	-- "npc_dota_hero_lina",
-	-- "npc_dota_hero_abaddon",
-	-- "npc_dota_hero_huskar",
-	-- "npc_dota_hero_phantom_assassin",
-	-- "npc_dota_hero_crystal_maiden",
-
-	-- "npc_dota_hero_ember_spirit",
-
-	-- "npc_dota_hero_shadow_shaman",
-	-- "npc_dota_hero_centaur",
-	-- "npc_dota_hero_venomancer",
-	-- "npc_dota_hero_doom_bringer",
-	-- "npc_dota_hero_slardar",
-
-	-- "npc_dota_hero_silencer",
-	-- "npc_dota_hero_skeleton_king",
-	-- "npc_dota_hero_lion",
-	-- "npc_dota_hero_legion_commander",
-	-- "npc_dota_hero_ursa",
-
-	-- "npc_dota_hero_luna",
-	-- "npc_dota_hero_necrolyte",
-	-- "npc_dota_hero_undying",
-	-- "npc_dota_hero_treant",
-	-- "npc_dota_hero_tidehunter",
-
-	-- "npc_dota_hero_slark",
-	-- "npc_dota_hero_riki",
-	-- "npc_dota_hero_spirit_breaker",
-	-- "npc_dota_hero_vengefulspirit",
-	-- "npc_dota_hero_clinkz",
-
-	-- "npc_dota_hero_jakiro",
-	-- "npc_dota_hero_leshrac",
-	-- "npc_dota_hero_queenofpain",
-	-- "npc_dota_hero_dazzle",
-	-- "npc_dota_hero_drow_ranger",
-
-	-- "npc_dota_hero_dragon_knight",
-	-- "npc_dota_hero_life_stealer",
-	-- "npc_dota_hero_bane",
-	-- "npc_dota_hero_lich",
-	-- "npc_dota_hero_nevermore",
-
-	-- "npc_dota_hero_night_stalker",
-	-- "npc_dota_hero_juggernaut",
-	-- "npc_dota_hero_axe",
-	-- "npc_dota_hero_razor",
-	-- "npc_dota_hero_sand_king",
-
-	-- "npc_dota_hero_oracle",
-	-- "npc_dota_hero_sniper",
-	-- "npc_dota_hero_bloodseeker",
-	-- "npc_dota_hero_bristleback",
-	-- "npc_dota_hero_earthshaker",
-
-	-- "npc_dota_hero_winter_wyvern",
-	-- "npc_dota_hero_pugna",
-	-- "npc_dota_hero_spectre",
-	-- "npc_dota_hero_antimage",
-	-- "npc_dota_hero_faceless_void",
-
-	-- "npc_dota_hero_warlock",
-	-- "npc_dota_hero_windrunner",
-	-- "npc_dota_hero_omniknight",
-	-- "npc_dota_hero_tiny",
-	-- "npc_dota_hero_death_prophet",
-
-	-- "npc_dota_hero_sven",
-	-- "npc_dota_hero_bounty_hunter",	--!
-	-- "npc_dota_hero_pudge",			--!
-	-- "npc_dota_hero_witch_doctor",	--!
-	-- "npc_dota_hero_kunkka",			--!
-
-	-- "npc_dota_hero_alchemist",
-	-- "npc_dota_hero_abyssal_underlord",
-	-- "npc_dota_hero_ancient_apparition",
-	-- "npc_dota_hero_arc_warden",
-	-- "npc_dota_hero_gyrocopter",
-
-	-- "npc_dota_hero_batrider",
-	-- "npc_dota_hero_beastmaster",
-	-- "npc_dota_hero_bounty_hunter",
-	-- "npc_dota_hero_brewmaster",
-	-- "npc_dota_hero_broodmother",
-
-	-- "npc_dota_hero_chen",
-	-- "npc_dota_hero_dark_seer",
-	-- "npc_dota_hero_disruptor",
-	-- "npc_dota_hero_earth_spirit",
-	-- "npc_dota_hero_elder_titan",
-
-	-- "npc_dota_hero_enchantress",
-	-- "npc_dota_hero_enigma",
-	-- "npc_dota_hero_keeper_of_the_light",
-	-- "npc_dota_hero_lycan",
-	-- "npc_dota_hero_magnataur",
-
-	-- "npc_dota_hero_medusa",
-	-- "npc_dota_hero_mirana",
-	-- "npc_dota_hero_monkey_king",
-	-- "npc_dota_hero_pudge",
-	-- "npc_dota_hero_sand_king",
-
-
-	-- "npc_dota_hero_troll_warlord",
-	-- "npc_dota_hero_obsidian_destroyer",
-	-- "npc_dota_hero_weaver",
-	-- "npc_dota_hero_nyx_assassin",
-	-- "npc_dota_hero_naga_siren",
-
-	-- "npc_dota_hero_phantom_lancer",
-	-- "npc_dota_hero_kunkka",
-	-- "npc_dota_hero_shredder",
-	-- "npc_dota_hero_tusk",
-	-- "npc_dota_hero_shadow_demon",
-
-
-	-- "npc_dota_hero_terrorblade",
-	-- "npc_dota_hero_phantom_lancer",
-	-- "npc_dota_hero_troll_warlord",
-
-	-- "npc_dota_hero_obsidian_destroyer",
-	-- "npc_dota_hero_templar_assassin",
-	-- "npc_dota_hero_kunkka",
-
-	-- "npc_dota_hero_weaver",
-	-- "npc_dota_hero_furion",
-	-- "npc_dota_hero_shredder",
-
-	-- "npc_dota_hero_nyx_assassin",
-	-- "npc_dota_hero_tusk",
-
-	-- "npc_dota_hero_naga_siren",
-	-- "npc_dota_hero_shadow_demon",
-}
---recording implemented bots, used in CM mode.
 local allBotHeroes = {
 	"npc_dota_hero_abaddon",
 	"npc_dota_hero_alchemist",
 	"npc_dota_hero_abyssal_underlord",
 	"npc_dota_hero_ancient_apparition",
 	"npc_dota_hero_arc_warden",
-	-- "npc_dota_hero_axe",
+	"npc_dota_hero_axe",
 	"npc_dota_hero_antimage",
 
 	"npc_dota_hero_batrider",
@@ -343,7 +136,7 @@ local allBotHeroes = {
 	"npc_dota_hero_clinkz",
 	"npc_dota_hero_chen",
 
-	"npc_dota_hero_dark_seer",
+	-- "npc_dota_hero_dark_seer",
 	"npc_dota_hero_disruptor",
 	"npc_dota_hero_doom_bringer",
 	"npc_dota_hero_dazzle",
@@ -421,7 +214,7 @@ local allBotHeroes = {
 
 	"npc_dota_hero_treant",
 	"npc_dota_hero_tidehunter",
-	--"npc_dota_hero_tiny",
+	"npc_dota_hero_tiny",
 	"npc_dota_hero_terrorblade",
 	"npc_dota_hero_templar_assassin",
 	"npc_dota_hero_troll_warlord",
@@ -489,7 +282,6 @@ local hero_pool_position_2 = {
 	"npc_dota_hero_kunkka",
 	"npc_dota_hero_dazzle",
 }
-
 local hero_pool_position_3 = {
 	"npc_dota_hero_centaur",
 	"npc_dota_hero_doom_bringer",
@@ -651,20 +443,49 @@ function Think()
 	end
 end
 
-local lastpick = 10;
+local lastpick = 0;
 function NewTurboModeLogic()
 	local hero;
-	if GetHeroPickState() == 58 and GameTime() >= 45 and GameTime() >= lastpick + 1.5 then
+	if GetHeroPickState() == 60 and GameTime() >= lastpick + 1.5 then
+		-- print("start turbo mode")
 		for i, id in pairs(GetTeamPlayers(GetTeam())) do
 			if IsPlayerBot(id) and IsPlayerInHeroSelectionControl(id) and GetSelectedHeroName(id) == "" then
 				if debugMode then
+					-- print("debug mode")
 					hero = RandomHero()
 				else
-					hero = PickRightHero(i - 1)
+					UpdateTestHeroesAfterPick()
+					hero = PickRightHero(i - 1)					
 				end
 				SelectHero(id, hero);
 				lastpick = GameTime();
 				return;
+			end
+		end
+	end
+end
+
+function UpdateTestHeroesAfterPick()
+	for _, playerID in pairs(GetTeamPlayers(TEAM_RADIANT)) do
+		local pickedHero = GetSelectedHeroName(playerID)
+		if pickedHero ~= "" then
+			for i = #testHeroes, 1, -1 do
+				if testHeroes[i] == pickedHero then
+					table.remove(testHeroes, i)
+					break
+				end
+			end
+		end
+	end
+
+	for _, playerID in pairs(GetTeamPlayers(TEAM_DIRE)) do
+		local pickedHero = GetSelectedHeroName(playerID)
+		if pickedHero ~= "" then
+			for i = #testHeroes, 1, -1 do
+				if testHeroes[i] == pickedHero then
+					table.remove(testHeroes, i)
+					break
+				end
 			end
 		end
 	end
@@ -954,31 +775,80 @@ function IsHumanPlayerInRadiant1Slot()
 end
 
 --Pick hero based on role
+-- function PickRightHero(slot)
+-- 	local initHero = "";
+-- 	local Team = GetTeam();
+-- 	local TeamName = ""
+	
+-- 	if slot == 0 then
+-- 		if Team == TEAM_RADIANT then
+-- 			initHero = "npc_dota_hero_spirit_breaker"
+-- 		else
+-- 			initHero = "npc_dota_hero_tusk"
+-- 		end
+-- 	elseif slot == 1 then
+-- 		if Team == TEAM_RADIANT then
+-- 			initHero = "npc_dota_hero_shredder"
+-- 		else
+-- 			initHero = "npc_dota_hero_drow_ranger"
+-- 		end
+-- 	elseif slot == 2 then
+-- 		if Team == TEAM_RADIANT then
+-- 			initHero = "npc_dota_hero_omniknight"
+-- 		else
+-- 			initHero = "npc_dota_hero_undying"
+-- 		end
+-- 	elseif slot == 3 then
+-- 		if Team == TEAM_RADIANT then
+-- 			initHero = "npc_dota_hero_riki"
+-- 		else
+-- 			initHero = "npc_dota_hero_disruptor"
+-- 		end
+-- 	elseif slot == 4 then
+-- 		if Team == TEAM_RADIANT then
+-- 			initHero = "npc_dota_hero_alchemist"
+-- 		else
+-- 			initHero = "npc_dota_hero_luna"
+-- 		end
+-- 	end
+-- 	return initHero;
+-- end
 function PickRightHero(slot)
 	local initHero = RandomHero();
 	local Team = GetTeam();
+	local TeamName = ""
+	if Team == TEAM_RADIANT then
+		TeamName = "RADIANT"
+	else
+		TeamName = "DIRE"
+	end
 	if slot == 0 then
 		while not role.CanBeMidlaner(initHero) do
 			initHero = RandomHero();
 		end
+		print("Team: ".. TeamName .. " -- Mid: " .. initHero)
 	elseif slot == 1 then
 		while (Team == TEAM_RADIANT and not role.CanBeOfflaner(initHero)) or
 			(Team == TEAM_DIRE and not role.CanBeSafeLaneCarry(initHero)) do
 			initHero = RandomHero();
 		end
+		print("Team: ".. TeamName .. " -- Offlane: " .. initHero)
 	elseif slot == 2 then
 		while not role.CanBeSupport(initHero) do
 			initHero = RandomHero();
 		end
+		print("Team: ".. TeamName .. " -- Support 4: " .. initHero)
 	elseif slot == 3 then
 		while not role.CanBeSupport(initHero) do
 			initHero = RandomHero();
 		end
+		print("Team: ".. TeamName .. " -- Support 5: " .. initHero)
 	elseif slot == 4 then
 		while (Team == TEAM_RADIANT and not role.CanBeSafeLaneCarry(initHero)) or
 			(Team == TEAM_DIRE and not role.CanBeOfflaner(initHero)) do
 			initHero = RandomHero();
 		end
+		print("Team: ".. TeamName .. " -- Carry: " .. initHero)
 	end
 	return initHero;
 end
@@ -1526,17 +1396,19 @@ end
 
 --Random hero which is non picked, non banned, or non human picked heroes if the human is the captain
 function RandomHero()
-	local hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
+	local hero = testHeroes[RandomInt(1, #testHeroes)];
+	-- print("hero list: " .. hero)
 	while (
 		IsUnavailableHero(hero) or IsCMPickedHero(GetTeam(), hero) or IsCMPickedHero(GetOpposingTeam(), hero) or
 			IsCMBannedHero(hero)) do
-		hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
+		hero = testHeroes[RandomInt(1, #testHeroes)];
 	end
 	return hero;
 end
 
 function GetRandomHero2()
 	local hero = allBotHeroes[RandomInt(1, #allBotHeroes)];
+	-- print("hero list: " .. hero)
 	while (
 		IsUnavailableHero(hero) or IsCMPickedHero(GetTeam(), hero) or IsCMPickedHero(GetOpposingTeam(), hero) or
 			IsCMBannedHero(hero)) do

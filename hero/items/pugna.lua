@@ -15,12 +15,13 @@ X.ItemsToBuy =
 	"item_boots",
 	"item_null_talisman",
 	"item_arcane_boots",
-	"item_kaya",
+	"item_kaya_and_sange",
 	"item_aether_lens", --以太之镜7.06
+	"item_dagon_5",
+	"item_aghanims_shard",
 	"item_ultimate_scepter",
 	"item_ultimate_scepter_2",
 	"item_black_king_bar", --bkb
-	"item_aghanims_shard",
 	"item_octarine_core",
 }
 

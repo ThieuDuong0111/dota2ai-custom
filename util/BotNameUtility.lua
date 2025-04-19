@@ -5,11 +5,11 @@ local dota2team = {
 		['name'] = "Team Falcons";
 		['alias'] = "Falcons";
 		['players'] = {
-			'Skiter',
 			'Malr1ne',
-			'ATF',
+			'Skiter',
+			'Sneyking',
 			'Cr1t-',
-			'Sneyking'
+			'ATF',
 		};
 		['sponsorship'] = 'stcplay';
 	},
@@ -17,11 +17,11 @@ local dota2team = {
 		['name'] = "Team Spirit";
 		['alias'] = "TSpirit";
 		['players'] = {
-			'RADDAN',
-			'Larl',
+			'Larl',		
 			'Collapse',
+			'Miposhka',
 			'rue',
-			'Miposhka'
+			'RADDAN',
 		};
 		['sponsorship'] = 'BetBoom';
 	}

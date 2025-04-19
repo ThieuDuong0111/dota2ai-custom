@@ -13,13 +13,16 @@ X.ItemsToBuy =
 	"item_magic_wand", --大魔棒7.14
 	"item_power_treads",
 	"item_veil_of_discord", --纷争7.20
-	"item_orchid", --紫苑
+	"item_dagon_3", --紫苑
+	"item_cyclone", --紫苑
 	"item_black_king_bar", --bkb
-	"item_ultimate_scepter", --蓝杖
-	"item_ultimate_scepter_2",
+	"item_wind_waker", --紫苑
+	"item_dagon_5",
+	"item_ultimate_scepter",
 	"item_shivas_guard", --希瓦
+	"item_ultimate_scepter_2",
+	
 	"item_aghanims_shard",
-	"item_bloodthorn" --血棘
 }
 
 return X

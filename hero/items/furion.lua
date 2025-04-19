@@ -11,16 +11,13 @@ X.ItemsToBuy = {
 	"item_blight_stone",
 	"item_null_talisman",
 	"item_power_treads",
-	"item_invis_sword",
-	"item_desolator",
-	"item_orchid",
+	"item_mjollnir",
 	"item_black_king_bar",
 	"item_aghanims_shard",
-	"item_bloodthorn",
-	"item_ultimate_scepter",
-	"item_silver_edge",
-	"item_ultimate_scepter_2",
+	"item_butterfly",
+	"item_greater_crit",
 	"item_assault",
+	"item_ultimate_scepter_2",
 }
 
 return X

@@ -18,11 +18,12 @@ X.ItemsToBuy =
 	"item_crimson_guard", --赤红甲
 	"item_aghanims_shard",
 	"item_pipe", --笛子
+	"item_shivas_guard",
 	"item_heart", --龙心7.20
 	"item_ultimate_scepter", --蓝杖
 	"item_ultimate_scepter_2",
 	"item_overwhelming_blink",
-	"item_assault",
+	
 }
 
 return X

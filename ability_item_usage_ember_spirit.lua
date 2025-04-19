@@ -16,7 +16,7 @@ local AbilityToLevelUp = {
 	AbilityNames[3],
 	AbilityNames[1],
 	AbilityNames[3],
-	AbilityNames[5],
+	AbilityNames[6],
 	AbilityNames[3],
 	AbilityNames[2],
 	AbilityNames[1],
@@ -26,9 +26,9 @@ local AbilityToLevelUp = {
 	AbilityNames[2],
 	"talent",
 	"talent",
-	AbilityNames[5],
+	AbilityNames[6],
 	"nil",
-	AbilityNames[5],
+	AbilityNames[6],
 	"nil",
 	"talent",
 	"nil",
@@ -405,8 +405,8 @@ end
 
 local DetectRemnant = fun1:EveryManySeconds(2, RefreshActiveRemnants)
 RefreshActiveRemnants()
-Consider[4] = function()
-	local ability = Abilities[4]
+Consider[5] = function()
+	local ability = Abilities[5]
 	if not ability:IsFullyCastable() or IsUsingSleightOfFist() or IsUsingRemnant() or fun1:CannotMove(npcBot) then
 		return 0
 	end
@@ -521,8 +521,9 @@ local function ShouldGoToFountainFromLane()
 		healthPercent <= 0.4 and manaPercent <= 0.1
 end
 
-Consider[5] = function()
-	local ability = Abilities[5]
+-- fire remnant
+Consider[6] = function()
+	local ability = Abilities[6]
 	if not ability:IsFullyCastable() or ability:GetCurrentCharges() == 0 then
 		return 0
 	end

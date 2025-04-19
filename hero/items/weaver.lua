@@ -7,19 +7,21 @@ local X = {}
 
 X.ItemsToBuy =
 {
-	"item_wraith_band", --系带
 	"item_tango",
 	-- "item_tango",
 	"item_flask",
 	"item_wraith_band", --系带
 	"item_magic_wand",
 	"item_power_treads", --假腿7.21
-	"item_diffusal_blade",
+	"item_falcon_blade",
 	"item_desolator",
-	-- "item_black_king_bar", --bkb
+	"item_maelstrom",
+	"item_black_king_bar", 
+	"item_aghanims_shard",
 	"item_sphere", 
 	"item_greater_crit",
 	"item_butterfly",
+	"item_mjollnir"
 }
 
 return X

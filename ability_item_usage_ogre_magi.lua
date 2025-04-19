@@ -29,19 +29,19 @@ local AbilityToLevelUp =
 	Abilities[2],
 	Abilities[3],
 	Abilities[2],
-	Abilities[6],
+	Abilities[7],
 	Abilities[2],
 	Abilities[1],
 	Abilities[1],
 	"talent",
 	Abilities[1],
-	Abilities[6],
+	Abilities[7],
 	Abilities[3],
 	Abilities[3],
 	"talent",
 	Abilities[3],
 	"nil",
-	Abilities[6],
+	Abilities[7],
 	"nil",
 	"talent",
 	"nil",
@@ -407,7 +407,7 @@ Consider[3] = function()
 end
 
 -- ogre_magi_unrefined_fireblast
-Consider[4] = function()
+Consider[5] = function()
 
 	local ability = AbilitiesReal[4];
 

@@ -11,15 +11,18 @@ X.ItemsToBuy =
 	-- "item_bracer",
 	"item_boots",
 	"item_magic_wand",
-	"item_phase_boots",
-	"item_hand_of_midas",
-	"item_ancient_janggo", --战鼓7.20
-	"item_invis_sword", --隐刀
+	"item_tranquil_boots",
+	
+	"item_blink", --战鼓7.20
 	"item_shivas_guard", --希瓦
 	"item_ultimate_scepter",
+	"item_octarine_core",
+	"item_refresher",
 	"item_ultimate_scepter_2",
 	"item_aghanims_shard",
-	"item_silver_edge", --大隐刀
+	"item_boots_of_bearing",
+	"item_overwhelming_blink",
+	"item_wind_waker", --大隐刀
 }
 
 return X

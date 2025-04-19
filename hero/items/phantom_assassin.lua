@@ -19,7 +19,7 @@ X.ItemsToBuy =
 	"item_basher",
 	"item_abyssal_blade", --大晕锤
 	"item_satanic", --撒旦7.07
-	"item_assault"
+	"item_ultimate_scepter_2",
 }
 
 return X

@@ -30,19 +30,19 @@ local AbilityToLevelUp =
 	Abilities[3],
 	Abilities[1],
 	Abilities[1],
-	Abilities[4],
+	Abilities[5],
 	Abilities[1],
 	Abilities[3],
 	Abilities[3],
 	"talent",
 	Abilities[2],
-	Abilities[4],
+	Abilities[5],
 	Abilities[2],
 	Abilities[2],
 	"talent",
 	Abilities[3],
 	"nil",
-	Abilities[4],
+	Abilities[5],
 	"nil",
 	"talent",
 	"nil",
@@ -191,9 +191,9 @@ Consider[1] = function()
 end
 
 -- life_stealer_open_wounds
-Consider[4] = function()
+Consider[2] = function()
 
-	local abilityNumber = 4
+	local abilityNumber = 2
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------

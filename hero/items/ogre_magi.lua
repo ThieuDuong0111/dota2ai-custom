@@ -16,7 +16,9 @@ X.ItemsToBuy =
 	"item_aether_lens", --以太之镜7.06
 	"item_ultimate_scepter", --蓝杖
 	"item_aghanims_shard",
-	"item_force_staff", --推推7.14
+	"item_ethereal_blade",
+	"item_dagon_5",
+	"item_heart",
 	"item_ultimate_scepter_2",
 	"item_octarine_core",
 }

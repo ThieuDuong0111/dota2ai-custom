@@ -10,20 +10,20 @@ X.ItemsToBuy =
 	"item_enchanted_mango", 
 	"item_quelling_blade",
 	"item_circlet",
-	-- "item_bottle",
-	"item_wraith_band",
+	"item_bottle",
+	"item_orb_of_corrosion",
 	"item_phase_boots",
-	-- "item_bfury",
+
 	"item_magic_wand",
-	"item_falcon_blade",
-	"item_lesser_crit",
+	"item_mage_slayer",
 	"item_black_king_bar",
-	"item_greater_crit",
+	"item_kaya_and_sange",
 	"item_ultimate_scepter",
+	"item_octarine_core", 
 	"item_ultimate_scepter_2",
+	"item_refresher",
 	"item_aghanims_shard",
-	"item_octarine_core", --玲珑心
-	"item_greater_crit",
+	--玲珑心
 	"item_moon_shard"
 }
 

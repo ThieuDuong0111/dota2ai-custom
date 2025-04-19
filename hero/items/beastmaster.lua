@@ -8,16 +8,18 @@ X.ItemsToBuy =
 {
 	"item_tango",
 	"item_quelling_blade",
-	"item_phase_boots", --相位7.21
+	"item_power_treads", --相位7.21
 	"item_magic_wand",
-	"item_helm_of_the_dominator",
-	"item_vladmir", --祭品
-	"item_black_king_bar", --BKB
-	"item_helm_of_the_overlord", --level 2 helm dominator 7.30
 	"item_ultimate_scepter",
+	"item_blink",
+	"item_black_king_bar",
+	"item_shivas_guard",
+	"item_black_king_bar",
 	"item_assault",
 	"item_ultimate_scepter_2",
 	"item_heart",
+	"item_overwhelming_blink",
+
 }
 
 return X

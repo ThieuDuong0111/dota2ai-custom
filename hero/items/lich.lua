@@ -12,7 +12,6 @@ X.ItemsToBuy =
 	"item_wind_lace",
 	"item_boots",
 	"item_tranquil_boots",
-	"item_urn_of_shadows",
 	"item_ghost",
 	"item_glimmer_cape", --微光
 	"item_force_staff",

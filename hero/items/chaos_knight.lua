@@ -14,7 +14,9 @@ X.ItemsToBuy =
 	"item_manta", --分身
 	"item_black_king_bar",
 	"item_heart", --龙心7.20
-	"item_assault" --强袭
+	"item_assault", --强袭
+	"item_aghanims_shard",
+	"item_ultimate_scepter_2"
 }
 
 return X

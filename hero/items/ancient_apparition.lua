@@ -13,16 +13,15 @@ X.ItemsToBuy =
 	"item_boots",
 	-- "item_flask",
 	"item_magic_wand",
-	"item_arcane_boots",
-	"item_glimmer_cape", --微光
-	"item_ghost",
-	-- "item_cyclone", --风杖
-	"item_ultimate_scepter", --蓝杖
-    "item_hurricane_pike",
-	"item_moon_shard",
-	"item_sheepstick", --羊刀
-	-- "item_lotus_orb", --清莲宝珠
-	-- "item_wind_waker",
+	"item_tranquil_boots", --item 1
+	"item_force_staff",
+	"item_cyclone",
+	"item_ultimate_scepter", --item 2
+	"item_witch_blade", --item 3
+	"item_hurricane_pike", --item 4
+	"item_aghanims_shard",
+	"item_moon_shard", --item 5
+	"item_wind_waker", --item 6
 	"item_ultimate_scepter_2",
 }
 

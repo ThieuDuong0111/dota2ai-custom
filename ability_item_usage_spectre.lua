@@ -270,8 +270,8 @@ Consider[1] = function()
 
 end
 
-Consider[6] = function()
-	local abilityNumber = 6
+Consider[5] = function()
+	local abilityNumber = 5
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------
@@ -338,8 +338,8 @@ Consider[6] = function()
 
 end
 
-Consider[5] = function()
-	local abilityNumber = 5
+Consider[6] = function()
+	local abilityNumber = 6
 	--------------------------------------
 	-- Generic Variable Setting
 	--------------------------------------

@@ -14,12 +14,14 @@ X.ItemsToBuy =
 	"item_bracer",
 	"item_arcane_boots",
 	"item_mekansm", --梅肯
-	"item_hood_of_defiance", --挑战
+	-- "item_hood_of_defiance", --挑战
 	"item_crimson_guard", --赤红甲
 	"item_pipe", --笛子
 	"item_guardian_greaves", --卫士胫甲
-	"item_lotus_orb", --清莲宝珠
-	"item_shivas_guard" --希瓦
+	"item_gungir", --清莲宝珠
+	"item_shivas_guard" ,--希瓦
+	"item_ultimate_scepter_2",
+	"item_aghanims_shard"
 }
 
 return X

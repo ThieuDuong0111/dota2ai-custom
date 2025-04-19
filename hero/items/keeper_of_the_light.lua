@@ -8,11 +8,11 @@ X.ItemsToBuy =
 {
 	"item_tango",
 	"item_tango",
-	"item_null_talisman",
+	-- "item_null_talisman",
 	"item_wind_lace",
 	"item_boots",
 	"item_tranquil_boots",
-	"item_glimmer_cape", --微光
+	"item_glimmer_cape",
 	"item_ghost", --绿杖
 	"item_force_staff", --推推7.14
 	"item_sheepstick", --羊刀
